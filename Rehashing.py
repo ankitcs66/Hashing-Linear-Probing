@@ -1,6 +1,6 @@
 class Node:
 
-  def __init__(self,key,value):
+   def __init__(self,key,value):
     self.key = key
     self.value = value
     self.next = None
@@ -9,10 +9,10 @@ class Node:
     
     class LL:
 
-  def __init__(self):
+   def __init__(self):
     self.head = None
 
-  def add(self, key, value):
+   def add(self, key, value):
 
     new_node = Node(key, value)
 
@@ -27,14 +27,14 @@ class Node:
 
       temp.next = new_node
 
-  def delete_head(self):
+   def delete_head(self):
 
     if self.head == None:
       return "Empty"
     else:
       self.head = self.head.next
 
-  def remove(self, key):
+   def remove(self, key):
     if self.head.key == key:
       self.delete_head()
       return 
@@ -56,7 +56,7 @@ class Node:
         temp.next = temp.next.next
         
 
-  def traverse(self):
+   def traverse(self):
 
     temp = self.head
 
@@ -65,7 +65,7 @@ class Node:
       print(temp.key,"-->",temp.value," ", end=" ")
       temp = temp.next
 
-  def size(self):
+   def size(self):
 
     temp = self.head
     counter = 0
@@ -77,7 +77,7 @@ class Node:
 
     return counter
 
-  def search(self,key):
+   def search(self,key):
 
     temp = self.head
     pos = 0
@@ -92,7 +92,7 @@ class Node:
 
     return -1
 
-  def get_node_at_index(self,index):
+   def get_node_at_index(self,index):
 
     temp = self.head
     counter = 0
@@ -106,47 +106,46 @@ class Node:
 
 
 
-
 class Dictionary:
 
-  def __init__(self, capacity):
+   def __init__(self, capacity):
 
     self.capacity = capacity
     self.size = 0
     # create array of LL
     self.buckets = self.make_array(self.capacity)
-
-  def make_array(self,capacity):
+ 
+   def make_array(self,capacity):
 
     L = []
     for i in range(capacity):
       L.append(LL())
     return L
 
-  def __setitem__(self,key,value):
+   def __setitem__(self,key,value):
     self.put(key,value)
 
-  def __getitem__(self,key):
+   def __getitem__(self,key):
     return self.get(key)
-
-  def __delitem__(self,key):
+ 
+   def __delitem__(self,key):
 
     bucket_index = self.hash_function(key)
 
     self.buckets[bucket_index].remove(key)
 
-  def __str__(self):
+   def __str__(self):
 
     for i in self.buckets:
       i.traverse()
 
     return ""
 
-  def __len__(self):
+   def __len__(self):
     return self.size
 
 
-  def get(self,key):
+   def get(self,key):
 
     bucket_index = self.hash_function(key)
 
@@ -159,7 +158,7 @@ class Dictionary:
       return node.value
 
 
-  def put(self, key, value):
+   def put(self, key, value):
 
     bucket_index = self.hash_function(key)
 
@@ -180,7 +179,7 @@ class Dictionary:
       node = self.buckets[bucket_index].get_node_at_index(node_index)
       node.value = value
 
-  def rehash(self):
+   def rehash(self):
     self.capacity = self.capacity * 2
     old_buckets = self.buckets
     self.size = 0
@@ -195,12 +194,12 @@ class Dictionary:
 
 
 
-  def get_node_index(self,bucket_index, key):
+   def get_node_index(self,bucket_index, key):
 
     node_index = self.buckets[bucket_index].search(key)
 
     return node_index
 
-  def hash_function(self,key):
+   def hash_function(self,key):
     return abs(hash(key)) % self.capacity
 
