@@ -203,3 +203,20 @@ class Dictionary:
    def hash_function(self,key):
     return abs(hash(key)) % self.capacity
 
+
+
+
+L = []
+
+for i in range(3):
+  L.append(LL())
+
+#[<__main__.LL at 0x7f9d69437cc0>,
+#<__main__.LL at 0x7f9d69437da0>,
+#<__main__.LL at 0x7f9d69437eb8>]
+
+
+
+
+
+
