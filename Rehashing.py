@@ -7,7 +7,8 @@ class Node:
     
     
     
-    class LL:
+      
+ class LL:
 
    def __init__(self):
     self.head = None
@@ -104,6 +105,7 @@ class Node:
       temp = temp.next
       counter+=1
 
+      
 
 
 class Dictionary:
